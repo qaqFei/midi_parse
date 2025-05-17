@@ -273,7 +273,7 @@ class MidiFile:
             else:
                 msg["global_sec_delta"] = msg["sec_time"]
         
-        self.second_length = sorted_msgs[-1]["global_sec_delta"]
+        self.second_length = sum(msg["global_sec_delta"] for msg in sorted_msgs)
                     
     @staticmethod
     def second2tick(t: int|float, track: Track, tick_per_quarter_note: int) -> float:
