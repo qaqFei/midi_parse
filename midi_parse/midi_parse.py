@@ -240,9 +240,9 @@ class MidiFile:
         for track in self.tracks:
             t = 0
             for msg in track:
+                t += msg["delta_time"]
                 msg["now_time"] = t
                 msg["now_beat"] = t / self.tick_per_quarter_note
-                t += msg["delta_time"]
                 
         if self.format != 2:
             globalBpmList = [{
